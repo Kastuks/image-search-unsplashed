@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 
 import SearchBar from "./components/SearchBar";
 
@@ -12,6 +12,8 @@ function App() {
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
+  // Assigns localStorage elements to queries array and rerenders application.
+  // Used to assign most recent search queries.
   const changed = () => {
     queries = [];
     for (var i = 0; i < localStorage.length; i++){
@@ -24,10 +26,7 @@ function App() {
     for (var i = 0; i < localStorage.length; i++){
       queries.push(localStorage.getItem(i))
   }
-  }, [localStorage.length, queries.length]
-  );
-
-  const Access_Key = process.env.REACT_APP_API_KEY;
+  }  );
 
   return (
     <>
